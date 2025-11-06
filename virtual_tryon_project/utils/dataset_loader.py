@@ -214,10 +214,15 @@ class VTONDataset(Dataset):
                 path.parent / path.name.replace('_mask.png', '.png'),
                 # Try with .jpg extension instead of .png
                 path.parent / path.name.replace('.png', '.jpg'),
-                # Try without the _00 suffix (common in VITON dataset)
-                path.parent / path.stem.rsplit('_', 1)[0] + '.png' if '_' in path.stem else path,
-                path.parent / path.stem.rsplit('_', 1)[0] + '.jpg' if '_' in path.stem else path,
             ]
+            
+            # Try without the _00 or _01 suffix (common in VITON dataset)
+            if '_' in path.stem:
+                base_name = path.stem.rsplit('_', 1)[0]
+                alternatives.extend([
+                    path.parent / (base_name + '.png'),
+                    path.parent / (base_name + '.jpg'),
+                ])
             
             for alt_path in alternatives:
                 if alt_path.exists() and alt_path != path:
