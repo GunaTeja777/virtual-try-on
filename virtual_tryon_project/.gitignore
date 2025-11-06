@@ -46,11 +46,7 @@ env/
 # ==============================
 # Checkpoints (ignore everything except readme)
 # ==============================
-checkpoints/**/*.pth
-checkpoints/**/*.pt
-checkpoints/**/*.png
-checkpoints/**/*.jpg
-!checkpoints/README.md
+README.md
 
 # ==============================
 # Dataset
@@ -114,3 +110,12 @@ READY_FOR_KAGGLE.md
 # ==============================
 Thumbs.db
 .directory
+
+# ==============================
+# Include checkpoints in repo
+# (We explicitly re-include the checkpoints folder and common checkpoint files
+#  because the glob patterns above can ignore *.pth/*.pt files.)
+# Negations must come after the ignore rules they override.
+!checkpoints/
+!checkpoints/**
+!checkpoints/*.pth
