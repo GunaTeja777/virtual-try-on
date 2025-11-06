@@ -44,6 +44,15 @@ env/
 *.ckpt
 
 # ==============================
+# Checkpoints (ignore everything except readme)
+# ==============================
+checkpoints/**/*.pth
+checkpoints/**/*.pt
+checkpoints/**/*.png
+checkpoints/**/*.jpg
+!checkpoints/README.md
+
+# ==============================
 # Dataset
 # ==============================
 dataset/
@@ -105,9 +114,3 @@ READY_FOR_KAGGLE.md
 # ==============================
 Thumbs.db
 .directory
-
-# ==============================
-# Include checkpoints (keep full folder)
-# ==============================
-!checkpoints/
-!checkpoints/**
