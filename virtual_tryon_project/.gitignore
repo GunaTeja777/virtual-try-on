@@ -44,11 +44,6 @@ env/
 *.ckpt
 
 # ==============================
-# Checkpoints (ignore everything except readme)
-# ==============================
-README.md
-
-# ==============================
 # Dataset
 # ==============================
 dataset/
@@ -112,10 +107,7 @@ Thumbs.db
 .directory
 
 # ==============================
-# Include checkpoints in repo
-# (We explicitly re-include the checkpoints folder and common checkpoint files
-#  because the glob patterns above can ignore *.pth/*.pt files.)
-# Negations must come after the ignore rules they override.
+# Include checkpoints (keep full folder)
+# ==============================
 !checkpoints/
 !checkpoints/**
-!checkpoints/*.pth
