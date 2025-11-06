@@ -208,18 +208,27 @@ class VTONDataset(Dataset):
     def _load_mask(self, path: Path) -> np.ndarray:
         """Load segmentation mask"""
         if not path.exists():
-            # Try alternative mask naming (without _mask suffix)
-            alt_path = path.parent / path.name.replace('_mask.png', '.png')
-            if alt_path.exists():
-                path = alt_path
+            # Try multiple naming patterns
+            alternatives = [
+                # Try without _mask suffix
+                path.parent / path.name.replace('_mask.png', '.png'),
+                # Try with .jpg extension instead of .png
+                path.parent / path.name.replace('.png', '.jpg'),
+                # Try without the _00 suffix (common in VITON dataset)
+                path.parent / path.stem.rsplit('_', 1)[0] + '.png' if '_' in path.stem else path,
+                path.parent / path.stem.rsplit('_', 1)[0] + '.jpg' if '_' in path.stem else path,
+            ]
+            
+            for alt_path in alternatives:
+                if alt_path.exists() and alt_path != path:
+                    path = alt_path
+                    break
             else:
-                # Return dummy mask if not found
-                print(f"⚠️  Mask not found: {path}")
+                # Still not found - return dummy mask without printing (too verbose)
                 return np.zeros((self.img_size[0], self.img_size[1]), dtype=np.uint8)
         
         mask = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
         if mask is None:
-            print(f"⚠️  Failed to load mask: {path}")
             return np.zeros((self.img_size[0], self.img_size[1]), dtype=np.uint8)
         
         mask = cv2.resize(mask, (self.img_size[1], self.img_size[0]))
