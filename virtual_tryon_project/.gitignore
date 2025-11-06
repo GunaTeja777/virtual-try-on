@@ -1,0 +1,116 @@
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==============================
+# Virtual Environment
+# ==============================
+venv/
+ENV/
+env/
+.venv
+
+# ==============================
+# Jupyter Notebook
+# ==============================
+.ipynb_checkpoints
+*.ipynb
+
+# ==============================
+# PyTorch
+# ==============================
+*.pth
+*.pt
+*.ckpt
+
+# ==============================
+# Checkpoints (ignore everything except readme)
+# ==============================
+checkpoints/**/*.pth
+checkpoints/**/*.pt
+checkpoints/**/*.png
+checkpoints/**/*.jpg
+!checkpoints/README.md
+
+# ==============================
+# Dataset
+# ==============================
+dataset/
+data/
+*.zip
+*.tar.gz
+*.rar
+
+# ==============================
+# Logs
+# ==============================
+logs/
+*.log
+wandb/
+runs/
+
+# ==============================
+# IDE and Editor
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ==============================
+# Temporary and Cache Files
+# ==============================
+tmp/
+temp/
+*.tmp
+
+# ==============================
+# Results and Outputs
+# ==============================
+results/
+outputs/
+inference_results/
+*.png
+*.jpg
+*.jpeg
+!docs/*.png
+!README_images/*.png
+
+# ==============================
+# Markdown and Documentation
+# ==============================
+*.md
+README*
+PROJECT_COMPLETE.md
+DATASET_REQUIREMENTS.md
+KAGGLE_SETUP.md
+QUICKSTART.md
+READY_FOR_KAGGLE.md
+
+# ==============================
+# System Files
+# ==============================
+Thumbs.db
+.directory
